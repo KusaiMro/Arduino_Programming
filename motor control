@@ -1,0 +1,20 @@
+// C++ code
+// motor control
+
+int p=10,n=11;
+
+void setup()
+{
+  pinMode(p,OUTPUT);
+  pinMode(n,OUTPUT);
+}
+
+void loop()
+{
+  analogWrite(p,255); //255 is the highest volt which is 5v
+  analogWrite(n,0);
+  delay(2000);
+  analogWrite(p,0);
+  analogWrite(n,120); //(120*5)/120 = 2.6v
+  delay(2000);
+}
