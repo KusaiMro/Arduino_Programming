@@ -1,0 +1,27 @@
+// C++ code
+//LDR Sensor
+
+int light=11;
+
+void setup()
+{
+	Serial.begin(9600);
+    pinMode(light,OUTPUT);
+}
+
+void loop()
+{
+    int resistance = analogRead(A0);
+    Serial.println(resistance);
+     if(resistance<=400)
+     {
+     digitalWrite(light,HIGH);
+     }else
+     {
+       digitalWrite(light,LOW);
+     }
+}
+  
+//total voltage,5v=1023;
+//voltage remain after 1st resistor=(256*5)/1023=1.25v;
+//volatage drop=5-1.25=3.75v
