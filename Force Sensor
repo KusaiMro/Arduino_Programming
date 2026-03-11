@@ -1,0 +1,47 @@
+// C++ code
+// Force Sensor
+
+int sensor = A0;
+int redPin=12,bluePin=11,greenPin=10;
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(redPin,OUTPUT);
+  pinMode(bluePin,OUTPUT);
+  pinMode(greenPin,OUTPUT);
+  
+}
+
+void loop()
+{
+  int force = analogRead(sensor);
+   Serial.println(force);
+   if(force>=0 && force<150)
+   {
+    red();
+   }
+   if(force>=150 && force<300)
+   {
+    blue();
+   }
+   if(force>=300 && force<=466)
+   {
+   green();
+   }
+}
+void red(){
+  digitalWrite(redPin,HIGH);
+  digitalWrite(bluePin,LOW);
+  digitalWrite(greenPin,LOW);
+}
+void blue(){
+  digitalWrite(bluePin,HIGH);
+  digitalWrite(redPin,LOW);
+  digitalWrite(greenPin,LOW);
+}
+void green(){
+  digitalWrite(greenPin,HIGH);
+  digitalWrite(bluePin,LOW);
+  digitalWrite(redPin,LOW);
+}
+  
