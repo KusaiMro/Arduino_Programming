@@ -1,0 +1,48 @@
+// C++ code
+// Soil Moisture Sensor
+int sensor=A0;
+int redPin=12,bluePin=11,greenPin=10;
+
+void setup()
+{
+	Serial.begin(9600);
+    pinMode(redPin,OUTPUT);
+    pinMode(bluePin,OUTPUT);
+    pinMode(greenPin,OUTPUT);
+}
+
+void loop()
+{
+    int moisture = analogRead(sensor);
+    Serial.println(moisture);
+    if(moisture>0 && moisture<=300)
+    {
+     red();
+    }
+    else if(moisture>300 && moisture<=600)
+    {
+     blue();
+    }
+    else
+    {
+      green();
+    }
+       
+}
+void blue(){
+  digitalWrite(bluePin,HIGH);
+  delay(1000);
+  digitalWrite(bluePin,LOW);
+}
+void red(){
+  digitalWrite(redPin,HIGH);
+  delay(1000);
+  digitalWrite(redPin,LOW);
+}
+void green(){
+  digitalWrite(greenPin,HIGH);
+  delay(1000);
+  digitalWrite(greenPin,LOW);
+  
+}
+ 
