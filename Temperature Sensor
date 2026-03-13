@@ -1,0 +1,31 @@
+// C++ code
+// Temperature Sensor
+
+int tem_pin = A0;
+int buzzer = 7;
+
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(buzzer,OUTPUT);
+}
+
+void loop()
+{
+  int tem_value = temparature();
+  Serial.println(tem_value);
+  if(tem_value>100 || tem_value<20)
+  {
+    digitalWrite(buzzer,HIGH);
+  }else
+  {
+    digitalWrite(buzzer,LOW);
+  }
+}
+
+int temparature()
+{
+  int tem = analogRead(tem_pin);
+  return map(tem,20,358,-40,125);
+  
+}
